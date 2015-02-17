@@ -81,14 +81,13 @@
   load();
 
   setInterval(function () {
-    load();
-    //setTimeout(load, 150);
-    //o.classList.remove('hide');
-    //o.classList.add('show');
-    //setTimeout(load, 150);
-    //setTimeout(function () {
-    //  o.classList.remove('show');
-    //  o.classList.add('hide');
-    //}, 300)
-  }, 500);
+    setTimeout(load, 150);
+    o.classList.remove('hide');
+    o.classList.add('show');
+    setTimeout(load, 150);
+    setTimeout(function () {
+      o.classList.remove('show');
+      o.classList.add('hide');
+    }, 300)
+  }, 10000);
 </script>

@@ -1,0 +1,94 @@
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .focus {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    height: 100%;
+  }
+
+  .blur {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    width: 120%;
+    height: auto;
+    min-height: 120%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+  }
+
+  .overlay {
+    background: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    opacity: 1;
+    transition: opacity 200ms linear;
+    -webkit-transition: opacity 200ms linear;
+    -moz-transition: opacity 200ms linear;
+  }
+  .overlay.hide {
+    opacity: 0;
+    transition: opacity 200ms linear;
+    -webkit-transition: opacity 200ms linear;
+    -moz-transition: opacity 200ms linear;
+  }
+</style>
+<script src='data-parsed-2.js'></script>
+
+<img class='blur' src=''/>
+<img class='focus' src=''/>
+<video class='focus'></video>
+<div class='overlay hide'></div>
+
+
+<script>
+  var b1 = document.querySelector('.blur');
+  var f1 = document.querySelector('.focus');
+  var v1 = document.querySelector('video.focus');
+  var o = document.querySelector('.overlay');
+  var i = -1;
+
+  function load() {
+    i++;
+    //var image = data[Math.floor(Math.random()*data.length)];
+    var image = data[i];
+    b1.setAttribute('src', image.image);
+    f1.setAttribute('src', image.image);
+    if (image.video) {
+      v1.setAttribute('src', image.video);
+      v1.play();
+    } else {
+      v1.pause();
+      v1.setAttribute('src', '');
+    }
+  }
+  load();
+
+  setInterval(function () {
+    load();
+    //setTimeout(load, 150);
+    //o.classList.remove('hide');
+    //o.classList.add('show');
+    //setTimeout(load, 150);
+    //setTimeout(function () {
+    //  o.classList.remove('show');
+    //  o.classList.add('hide');
+    //}, 300)
+  }, 500);
+</script>

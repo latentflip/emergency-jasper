@@ -48,6 +48,10 @@
     -webkit-transition: opacity 200ms linear;
     -moz-transition: opacity 200ms linear;
   }
+
+  .hidden {
+    display: none;
+  }
 </style>
 <script src='data-parsed-2.js'></script>
 
@@ -73,9 +77,11 @@
     if (image.video) {
       v1.setAttribute('src', image.video);
       v1.play();
+      v1.classList.remove('hidden');
     } else {
       v1.pause();
       v1.setAttribute('src', '');
+      v1.classList.add('hidden');
     }
   }
   load();
